@@ -21,7 +21,7 @@ function Home() {
 
   return (
     <div className="home">
-      <Header userName={user?.name} />
+      <Header />
       <Content />
     </div>
   );

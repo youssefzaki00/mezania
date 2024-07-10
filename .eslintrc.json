@@ -19,6 +19,8 @@
     "quotes": "off",
     "object-curly-newline": "off",
     "react/prop-types": "off",
-    "comma-dangle": "off"
+    "comma-dangle": "off",
+    "implicit-arrow-linebreak": "off",
+    "function-paren-newline": "off"
   }
 }

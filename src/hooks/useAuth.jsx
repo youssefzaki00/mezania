@@ -3,6 +3,9 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signOut,
+  // sendEmailVerification,
+  updateProfile,
+  getAuth,
 } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { auth, db } from "../firebase/Firebase.ts";
@@ -26,10 +29,17 @@ const useAuth = () => {
         email,
         password
       );
+
+      // await sendEmailVerification(auth.currentUser).catch((err) =>
+      //   console.log(err)
+      // );
+      const profileAuth = getAuth();
+      updateProfile(profileAuth.currentUser, {
+        displayName: name,
+      });
       const newUser = userCredential.user;
-      console.log(newUser);
       await setDoc(doc(db, "users", newUser.uid), {
-        name: newUser?.name ? newUser.name : name,
+        name: newUser?.displayName ? newUser.displayName : name,
         email: newUser.email,
         password,
         uid: newUser.uid,
