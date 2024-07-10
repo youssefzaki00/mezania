@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+:root {
+  // --container-width: 119rem;
+  --color-base: #1e1e1e;
+  --color-white: #fff;
+  --color-main-10: #b2b2b2;
+  --color-main-20: #a3a3a3;
+  --color-main-30: #949494;
+  --color-main-40: #868686;
+  --color-main-50: #777777;
+  --color-main-60: #595959;
+  --color-main-70: #3c3c3c;
+  --color-yellow: #ffe600;
+  --color-green: #51d289;
+  --color-blue: #00b3ff;
+  --color-error: #f44336;
+  --color-section-box: #fbfbfb;
+  --color-box-color-light: #fffde7;
+  --color-base-graph: #d2d2d2;
+  --color-background: var(--color-base);
+  --color-text: var(--color-black);
+
+  --font-family-Open-Sans: "Open Sans", sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semi-bold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extra-bold: 800;
+  --heading-h1: 6rem;
+  --heading-h2: 4.24rem;
+  --heading-h3: 3rem;
+  --heading-h4: 2.12rem;
+  --paragraph: 1.5rem;
+  --button-text: 1.862rem;
+  --small-text: 1.06rem;
+  --text-goals: 1.3rem;
+  --label-text: 1.3rem;
+  --name-fix-expense: 1.3rem;
+  --transition-timing: 0.3s;
+}

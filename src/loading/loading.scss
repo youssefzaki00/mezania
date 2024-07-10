@@ -1,0 +1,100 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300);
+
+$size: 200px;
+$spinnerWidth: 0.8;
+$loading_color: #0fa;
+$maskColor: #161616;
+$animTime: 2.25s;
+$easing: ease;
+$timing: $easing;
+
+$size: $size * 2;
+
+body {
+  background: $maskColor;
+  width: 100%;
+  height: 100%;
+}
+
+.spinner {
+  width: $size;
+  height: $size;
+  position: absolute;
+  border-radius: 100%;
+  overflow: hidden;
+  left: calc(50% - (#{calc($size / 2)}));
+  transform: scale(0.5);
+  top: 50px;
+}
+
+.mask {
+  width: calc($size * $spinnerWidth);
+  height: calc($size * $spinnerWidth);
+  background: $maskColor;
+  border-radius: 100%;
+  position: absolute;
+  top: calc($size * (0.5 - $spinnerWidth/2));
+  left: calc($size * (0.5 - $spinnerWidth/2));
+}
+
+.color {
+  width: $size;
+  height: $size;
+  animation: spin $animTime $easing infinite;
+  -webkit-animation: spin $animTime $easing infinite;
+  transition-timing-function: $easing;
+  -webkit-transition-timing-function: $easing;
+  border-radius: 100%;
+  background: linear-gradient($loading_color 1%, transparent);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.spinner:before,
+.spinner:after {
+  content: " ";
+  z-index: 100;
+  display: block;
+  transform-origin: 50% 50%;
+  -webkit-transform-origin: 100% 50%;
+  width: calc($animTime / 4);
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: $maskColor;
+  height: $size;
+}
+
+.spinner:before {
+  animation: spin $animTime $easing infinite;
+  -webkit-animation: spin $animTime $easing infinite;
+  animation-delay: calc($animTime / 4);
+  -webkit-animation-delay: calc($animTime / 4);
+  transition-timing-function: $easing;
+  -webkit-transition-timing-function: $easing;
+}
+.spinner:after {
+  animation: offsetSpin $animTime $easing infinite;
+  -webkit-animation: offsetSpin $animTime $easing infinite;
+  transition-timing-function: $easing;
+  -webkit-transition-timing-function: $easing;
+}
+
+@keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes offsetSpin {
+  from {
+    -webkit-transform: rotate(180deg);
+  }
+  to {
+    -webkit-transform: rotate(540deg);
+  }
+}

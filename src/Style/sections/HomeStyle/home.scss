@@ -1,0 +1,6 @@
+.home {
+  width: 100%;
+  padding: 0 3.2rem;
+  @import "./header.scss";
+  @import "./content/content.scss";
+}

@@ -1,0 +1,97 @@
+.calculation {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.7rem;
+  background-color: var(--color-section-box);
+  padding: 2rem 3rem;
+  border-radius: 0.3rem;
+  -webkit-border-radius: 0.3rem;
+  -moz-border-radius: 0.3rem;
+  -ms-border-radius: 0.3rem;
+  -o-border-radius: 0.3rem;
+  h3 {
+    width: 100%;
+    font-size: var(--heading-h3);
+    padding-bottom: 1.5rem;
+    border-bottom: 0.15rem dotted #a5a5a5;
+  }
+  & > .box__value {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--color-box-color-light);
+    padding: 1.2rem;
+    font-size: var(--heading-h3);
+    gap: 1rem;
+    box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
+    border-radius: 0.4rem;
+    -webkit-border-radius: 0.4rem;
+    -moz-border-radius: 0.4rem;
+    -ms-border-radius: 0.4rem;
+    -o-border-radius: 0.4rem;
+    p:first-child {
+      font-size: var(--label-text);
+      font-weight: var(--font-weight-bold);
+      text-transform: uppercase;
+    }
+  }
+  @import "../../../global/graph";
+  .boxes__values {
+    display: flex;
+    width: 100%;
+    gap: 0.8rem;
+    padding-bottom: 2.7rem;
+    border-bottom: 0.15rem dotted #a5a5a5;
+
+    font-family: var(--font-family-Open-Sans);
+    .box__value {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding: 1.2rem;
+      gap: 0.8rem;
+      background-color: var(--color-base);
+      box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
+      font-size: var(--paragraph);
+      border-radius: 0.4rem;
+      -webkit-border-radius: 0.4rem;
+      -moz-border-radius: 0.4rem;
+      -ms-border-radius: 0.4rem;
+      -o-border-radius: 0.4rem;
+      p:first-child {
+        font-size: var(--label-text);
+        font-weight: var(--font-weight-bold);
+        text-transform: uppercase;
+        color: var(--color-white);
+      }
+      p:last-child {
+        color: var(--color-green);
+        text-transform: capitalize;
+        text-align: center;
+        font-size: var(--heading-h4);
+      }
+    }
+    .box__value:nth-child(2) {
+      p:last-child {
+        color: var(--color-yellow);
+      }
+    }
+  }
+  button {
+    width: 100%;
+  }
+}
+@include responsive(phone) {
+  .calculation {
+    order: -1;
+    .boxes__values {
+      justify-content: center;
+    }
+    button {
+      font-size: var(--heading-h5);
+      width: 100%;
+    }
+  }
+}
