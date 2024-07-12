@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../components/Logo";
 import { toast } from "react-toastify";
-import useAuth from "./../hooks/useAuth";
+import useAuth from "../hooks/useAuth";
 
 function Login() {
   const { login } = useAuth();

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Header from "./Header";
+import Header from "../components/Header";
 import Content from "./Content";
 import { useNavigate } from "react-router-dom";
 import Loading from "./../loading/Loading";
@@ -10,6 +10,8 @@ function Home() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log("Home", user);
+
     if (!loading && !user) {
       navigate("/welcome/signup");
     }

@@ -1,8 +1,8 @@
-import Welcome from "../sections/Welcome";
-import Home from "../sections/Home";
 import { Route, Routes } from "react-router-dom";
-import Signup from "../sections/Signup";
-import Login from "../sections/Login";
+import Home from "../sections/Home";
+import Welcome from "../auth/Welcome";
+import Signup from "../auth/Signup";
+import Login from "../auth/Login";
 
 function App() {
   return (

@@ -1,8 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import logoMain from "../assets/home/logo-main.svg";
 import userLogo from "../assets/home/user.svg";
-import Button from "../components/Button";
-import useAuth from "./../hooks/useAuth";
+import Button from "./Button";
+import useAuth from "../hooks/useAuth";
 import { toast } from "react-toastify";
 
 function Header() {
@@ -15,7 +15,7 @@ function Header() {
       navigate("/welcome/login");
       toast.success("You signed out successfully");
     } catch (error) {
-      console.error("Error signing out: ", error.message);
+      console.error("Error signing out: ", error?.message);
     }
   };
   return (
