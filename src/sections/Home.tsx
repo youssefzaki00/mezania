@@ -10,8 +10,6 @@ function Home() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("Home", user);
-
     if (!loading && !user) {
       navigate("/welcome/signup");
     }

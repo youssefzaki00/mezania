@@ -3,15 +3,18 @@ import { Link, useNavigate } from "react-router-dom";
 import Logo from "../components/Logo";
 import { toast } from "react-toastify";
 import useAuth from "./../hooks/useAuth";
+import { ErrorMessage } from "../interface";
 
 function Signup() {
   const { signup } = useAuth();
   const navigate = useNavigate();
-  const nameRef = useRef(null);
-  const emailRef = useRef(null);
-  const passwordRef = useRef(null);
-  const confirmPasswordRef = useRef(null);
-
+  const nameRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+  const confirmPasswordRef = useRef<HTMLInputElement>(null);
+  const isErrorMessage = (error: unknown): error is ErrorMessage => {
+    return typeof error === "object" && error !== null && "message" in error;
+  };
   const handleSignup = async () => {
     const name = nameRef?.current?.value;
     const email = emailRef?.current?.value;
@@ -28,7 +31,12 @@ function Signup() {
       toast.success("Signed up successfully!");
       navigate("/");
     } catch (error) {
-      toast.error(error.message);
+      if (isErrorMessage(error)) {
+        console.error("Error signing up: ", error.message);
+        toast.error(error?.message);
+      } else {
+        console.error("Unknown error signing up");
+      }
     }
   };
 

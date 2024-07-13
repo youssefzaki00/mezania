@@ -10,10 +10,39 @@ function Description() {
   const toggleClass = (): void => {
     setIsClose(!isClose);
   };
+  // const budgets = [
+  //   {
+  //     name: "month1",
+  //     amount: 1800,
+  //     expenses: [
+  //       { name: "park", amount: 400 },
+  //       { name: "food", amount: 100 },
+  //       { name: "bike", amount: 300 },
+  //     ],
+  //   },
+  //   {
+  //     name: "month2",
+  //     amount: 1800,
+  //     expenses: [
+  //       { name: "park", amount: 400 },
+  //       { name: "food", amount: 100 },
+  //       { name: "bike", amount: 300 },
+  //     ],
+  //   },
+  //   {
+  //     name: "month3",
+  //     amount: 1800,
+  //     expenses: [
+  //       { name: "park", amount: 400 },
+  //       { name: "food", amount: 100 },
+  //       { name: "bike", amount: 300 },
+  //     ],
+  //   },
+  // ];
   return (
     <section className="description">
       <div className="description__header">
-        <h4>description</h4>
+        <h3>Budgets</h3>
         <div className="filter">
           <p className="filter__text">filter expenses</p>
           <button

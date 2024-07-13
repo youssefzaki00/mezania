@@ -4,10 +4,15 @@ import userLogo from "../assets/home/user.svg";
 import Button from "./Button";
 import useAuth from "../hooks/useAuth";
 import { toast } from "react-toastify";
+import { ErrorMessage } from "../interface";
 
 function Header() {
   const { user, signout } = useAuth();
   const navigate = useNavigate();
+
+  const isErrorMessage = (error: unknown): error is ErrorMessage => {
+    return typeof error === "object" && error !== null && "message" in error;
+  };
 
   const handleSignOut = async () => {
     try {
@@ -15,7 +20,11 @@ function Header() {
       navigate("/welcome/login");
       toast.success("You signed out successfully");
     } catch (error) {
-      console.error("Error signing out: ", error?.message);
+      if (isErrorMessage(error)) {
+        console.error("Error signing out: ", error.message);
+      } else {
+        console.error("Unknown error signing out");
+      }
     }
   };
   return (
@@ -29,7 +38,7 @@ function Header() {
           <img src={userLogo} alt="user logo" />
           {user ? (
             <button className="SignOutButton" onClick={handleSignOut}>
-              SignOut
+              Sign Out
             </button>
           ) : (
             <Link className="SignUpButton " to="/welcome/signup">

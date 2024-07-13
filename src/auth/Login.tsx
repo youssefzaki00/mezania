@@ -3,12 +3,19 @@ import { Link, useNavigate } from "react-router-dom";
 import Logo from "../components/Logo";
 import { toast } from "react-toastify";
 import useAuth from "../hooks/useAuth";
+import { ErrorMessage } from "../interface";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase/Firebase";
 
 function Login() {
   const { login } = useAuth();
   const navigate = useNavigate();
-  const emailRef = useRef(null);
-  const passwordRef = useRef(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+
+  const isErrorMessage = (error: unknown): error is ErrorMessage => {
+    return typeof error === "object" && error !== null && "message" in error;
+  };
 
   const handleLogin = async () => {
     const email = emailRef.current?.value;
@@ -17,9 +24,14 @@ function Login() {
     try {
       await login(email, password);
       toast.success("Logged in successfully!");
-      navigate("/"); // Redirect to home or desired page after login
+      navigate("/");
     } catch (error) {
-      toast.error(error?.message);
+      if (isErrorMessage(error)) {
+        console.error("Error Login : ", error.message);
+        toast.error(error?.message);
+      } else {
+        console.error("Unknown error Login");
+      }
     }
   };
 

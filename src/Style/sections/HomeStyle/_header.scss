@@ -21,6 +21,8 @@ header {
     align-items: center;
     gap: 2.3rem;
     button {
+      color: var(--color-base);
+      font-weight: 600;
       display: block;
       width: fit-content;
       padding: 1.2rem;

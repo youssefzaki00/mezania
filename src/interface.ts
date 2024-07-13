@@ -5,3 +5,6 @@ export interface User {
   displayName: string | null;
   photoURL: string | null;
 }
+export interface ErrorMessage {
+  message: string;
+}
