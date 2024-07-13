@@ -1,70 +1,110 @@
-# Getting Started with Create React App
+# Mezania - Budget Tracker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to Mezania, a powerful and intuitive budget tracker application built with TypeScript, React, SCSS, and Firebase. Mezania helps you keep track of your expenses and manage your budget effectively. This project utilizes React Router for routing and React Toastify for notifications, ensuring a smooth user experience.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Deployment](#deployment)
+- [Technologies Used](#technologies-used)
+- [Contributing](#contributing)
+- [License](#license)
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- User Authentication with Firebase
+- Responsive and interactive UI with React and SCSS
+- Real-time data synchronization with Firebase
+- Intuitive navigation using React Router
+- Notifications using React Toastify
+- Easy to deploy and manage with Vercel
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Installation
 
-### `npm test`
+To get started with Mezania locally, follow these steps:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Clone the repository**:
 
-### `npm run build`
+   ```bash
+   git clone https://github.com/yourusername/mezania.git
+   cd mezania
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. **Install dependencies**:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```bash
+   npm install
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. **Start the development server**:
+   ```bash
+   npm run dev
+   ```
 
-### `npm run eject`
+## Usage
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+After starting the development server, you can access Mezania in your browser at `http://localhost:3000`. From here, you can sign up or log in, add new budgets, and manage your expenses.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Deployment
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Mezania is deployed using Vercel. Here’s how you can deploy your own instance:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. **Sign up for Vercel**: If you haven't already, sign up at [Vercel](https://vercel.com/).
 
-## Learn More
+2. **Connect your GitHub repository**: Import your Mezania repository to Vercel.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. **Configure the project**:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   - Set the root directory if necessary.
+   - Ensure that the build command is set to `npm run build`.
+   - Since the project does not require a build before deployment, ensure Vercel recognizes your `package.json` correctly.
 
-### Code Splitting
+4. **Deploy**: Click deploy, and your project will be live on a Vercel-provided URL.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Technologies Used
 
-### Analyzing the Bundle Size
+- **TypeScript**: For static type checking and better developer experience.
+- **React**: For building user interfaces.
+- **SCSS**: For styling the application.
+- **Firebase**: For authentication and real-time database.
+- **React Router**: For client-side routing.
+- **React Toastify**: For notifications.
+- **Vercel**: For deployment and hosting.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Contributing
 
-### Making a Progressive Web App
+Contributions are welcome! If you'd like to contribute to Mezania, please fork the repository and create a pull request. Here’s how you can contribute:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+1. **Fork the repository**:
 
-### Advanced Configuration
+   ```bash
+   git fork https://github.com/youssefzaki00/mezania.git
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+2. **Create a new branch**:
 
-### Deployment
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+3. **Make your changes and commit**:
 
-### `npm run build` fails to minify
+   ```bash
+   git commit -m "Add some feature"
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+4. **Push to the branch**:
+
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+
+5. **Create a pull request**: Navigate to your repository on GitHub and create a pull request.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
+---
