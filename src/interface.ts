@@ -8,3 +8,6 @@ export interface User {
 export interface ErrorMessage {
   message: string;
 }
+export interface ButtonProps {
+  content: string;
+}

@@ -82,8 +82,34 @@ function Calculation() {
           <p>£700.00</p>
         </div>
       </div>
-      <button className="button" type="button">
-        reset expenses
+      <div className="box__value">
+        <h4 className="Expenses__header h4-heading">Expenses</h4>
+        <p>£2,700.00</p>
+      </div>
+      <div className="box__expenses">
+        <div className="expense">
+          <p className="expense__name">food</p>
+          <p className="expense__value">£200</p>
+        </div>
+        <div className="expense">
+          <p className="expense__name">phone</p>
+          <p className="expense__value">£3000</p>
+        </div>
+        <div className="expense">
+          <p className="expense__name">travel</p>
+          <p className="expense__value">£500</p>
+        </div>
+        <div className="expense">
+          <p className="expense__name">taxi</p>
+          <p className="expense__value">£50</p>
+        </div>
+        <div className="expense">
+          <p className="expense__name">T-shirt</p>
+          <p className="expense__value">£800</p>
+        </div>
+      </div>
+      <button className="button h4-heading" type="button">
+        add expense
       </button>
     </section>
   );

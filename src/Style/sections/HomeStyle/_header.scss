@@ -21,7 +21,6 @@ header {
     align-items: center;
     gap: 2.3rem;
     button {
-      color: var(--color-base);
       font-weight: 600;
       display: block;
       width: fit-content;
@@ -39,7 +38,7 @@ header {
       }
       .SignOutButton,
       .SignUpButton {
-        padding: 0.8rem 1.2rem;
+        padding: 0.6rem 1.2rem;
         border-radius: 0.6rem;
         color: var(--color-white);
         background-color: var(--color-base);
