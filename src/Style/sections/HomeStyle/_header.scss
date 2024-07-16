@@ -36,6 +36,11 @@ header {
       img {
         object-fit: contain;
       }
+      .name {
+        font-size: var(--heading-h5);
+        font-weight: 600;
+        color: var(--color-white);
+      }
       .SignOutButton,
       .SignUpButton {
         padding: 0.6rem 1.2rem;

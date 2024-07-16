@@ -6,7 +6,7 @@ import savings from "../assets/icons/savings.svg";
 
 function Description() {
   const [isClose, setIsClose] = useState<boolean>(false);
-  const [isEmpty, setIsEmpty] = useState<boolean>(false);
+  const [isEmpty, setIsEmpty] = useState<boolean>(true);
   const toggleClass = (): void => {
     setIsClose(!isClose);
   };
@@ -70,13 +70,13 @@ function Description() {
           <span> expenses yet.</span>
         </p>
         <p className="empty__sub">
-          No worries, just hit the <span> &apos;Add&apos;</span> button to get
-          started
+          No worries, just hit the <span> &apos;Add New budget&apos; </span>
+          button to get started
         </p>
         <img src={cart} alt="chevron down" />
       </div>
       <div className={`expenses ${isEmpty ? "close" : ""}`}>
-        <div className="expense">
+        {/* <div className="expense">
           <div className="expense__details">
             <img src={savings} alt="savings" />
             <div className="expense__content">
@@ -87,34 +87,14 @@ function Description() {
               </p>
             </div>
           </div>
-          <p className="expense__amount">£125,00</p>
-        </div>
-        <div className="expense">
-          <div className="expense__details">
-            <img src={savings} alt="savings" />
-            <div className="expense__content">
-              <h4 className="expense__title">savings</h4>
-              <p className="expense__date">
-                date:
-                <span> January, 12-2023</span>
-              </p>
+          <div className="expense__budget">
+            <p className="expense__amount">budget: £125,00</p>
+            <div className="expense__amount_calc">
+              <p className="expense__amount_spent">spent: £125,00</p>
+              <p className="expense__amount_remaining">remaining: £125,00</p>
             </div>
           </div>
-          <p className="expense__amount">£125,00</p>
-        </div>
-        <div className="expense">
-          <div className="expense__details">
-            <img src={savings} alt="savings" />
-            <div className="expense__content">
-              <h4 className="expense__title">savings</h4>
-              <p className="expense__date">
-                date:
-                <span> January, 12-2023</span>
-              </p>
-            </div>
-          </div>
-          <p className="expense__amount">£125,00</p>
-        </div>
+        </div> */}
       </div>
     </section>
   );

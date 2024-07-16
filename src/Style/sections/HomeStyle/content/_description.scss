@@ -85,7 +85,7 @@
   .empty {
     height: 100%;
     display: flex;
-    justify-content: center;
+    // justify-content: center;
     align-items: center;
     flex-direction: column;
     .empty__text {
@@ -106,6 +106,7 @@
       text-align: center;
       margin-bottom: 4.9rem;
       span {
+        font-weight: 600;
         color: var(--color-green);
       }
     }
@@ -134,7 +135,7 @@
         .expense__content {
           display: flex;
           flex-direction: column;
-          gap: 0.4rem;
+          gap: 1rem;
           align-items: start;
           justify-content: space-between;
           font-size: var(--paragraph);
@@ -148,8 +149,27 @@
           }
         }
       }
-      .expense__amount {
-        font-size: var(--heading-h3);
+      .expense__budget {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 1rem;
+        font-size: var(--paragraph);
+        font-weight: 500;
+        .expense__amount {
+          color: var(--color-yellow);
+          &_calc {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            .expense__amount_remaining {
+              color: var(--color-green);
+            }
+            .expense__amount_spent {
+              color: var(--color-error);
+            }
+          }
+        }
       }
     }
   }

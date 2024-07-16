@@ -122,6 +122,8 @@
 }
 @include responsive(phone) {
   .calculation {
+    padding: 0.8rem;
+
     order: -1;
     .boxes__values {
       justify-content: center;
