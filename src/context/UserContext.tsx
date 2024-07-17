@@ -1,4 +1,3 @@
-// src/contexts/UserContext.tsx
 import React, {
   createContext,
   useEffect,
@@ -17,20 +16,7 @@ import {
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { auth, db } from "../firebase/Firebase";
 import { toast } from "react-toastify";
-
-interface User {
-  uid: string;
-  email: string;
-  displayName?: string;
-}
-
-interface UserContextProps {
-  user: User | null;
-  loading: boolean;
-  login: (email: string, password: string) => Promise<void>;
-  signup: (name: string, email: string, password: string) => Promise<void>;
-  signout: () => Promise<void>;
-}
+import { User, UserContextProps } from "../interface";
 
 export const UserContext = createContext<UserContextProps | undefined>(
   undefined
@@ -86,6 +72,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
           uid: newUser.uid,
           displayName: name,
           email: newUser.email,
+          budgets: [],
         });
         await getUser(newUser.uid);
       } catch (error: any) {
@@ -120,12 +107,13 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
   const value = useMemo(
     () => ({
       user,
+      setUser,
       loading,
       login,
       signup,
       signout,
     }),
-    [user, loading, login, signup, signout]
+    [user, setUser, setLoading, loading, login, signup, signout, getUser]
   );
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;

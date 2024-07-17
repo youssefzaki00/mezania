@@ -13,12 +13,12 @@
     // "import/no-extraneous-dependencies": "off",
     // "react/jsx-filename-extension": "off",
     // "jsx-a11y/label-has-associated-control": "off",
+    // "react/prop-types": "off",
     "linebreak-style": "off",
     "operator-linebreak": "off",
     "no-console": "off",
     "quotes": "off",
     "object-curly-newline": "off",
-    "react/prop-types": "off",
     "comma-dangle": "off",
     "implicit-arrow-linebreak": "off",
     "function-paren-newline": "off"

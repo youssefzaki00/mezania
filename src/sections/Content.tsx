@@ -1,6 +1,5 @@
-import React from "react";
-import Description from "./Description.js";
-import Calculation from "./Calculation.js";
+import Description from "./Description";
+import Calculation from "./Calculation";
 
 function Content() {
   return (

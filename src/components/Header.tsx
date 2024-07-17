@@ -1,18 +1,25 @@
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import logoMain from "../assets/home/logo.svg";
-import userLogo from "../assets/home/user.svg";
+import logoMain from "../../public/logo.svg";
 import Button from "./Button";
 import useAuth from "../hooks/useAuth";
 import { toast } from "react-toastify";
 import { ErrorMessage } from "../interface";
-
+import useBudget from "../hooks/useBudget";
+import Modal from "./Modal";
 function Header() {
   const { user, signout } = useAuth();
+  const { addBudget } = useBudget();
   const navigate = useNavigate();
+
+  const [showForm, setShowForm] = useState(false);
+  const [title, setTitle] = useState("");
+  const [amount, setAmount] = useState("");
 
   const isErrorMessage = (error: unknown): error is ErrorMessage => {
     return typeof error === "object" && error !== null && "message" in error;
   };
+
   const handleSignOut = async () => {
     try {
       await signout();
@@ -26,13 +33,54 @@ function Header() {
       }
     }
   };
+
+  const handleAddBudget = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (title.trim() === "" || amount.trim() === "") {
+      toast.error("Title and amount are required");
+      return;
+    }
+
+    try {
+      await addBudget(title, Number(amount));
+      setTitle("");
+      setAmount("");
+      setShowForm(false);
+    } catch (error) {
+      toast.error("Error adding budget");
+    }
+  };
+
   return (
     <header>
       <div className="header__logo">
         <img src={logoMain} alt="logo" />
       </div>
       <div className="header__actions">
-        <Button content="add new budget" />
+        <Button content="Add New Budget" onClick={() => setShowForm(true)} />
+        <Modal show={showForm} onClose={() => setShowForm(false)}>
+          <form onSubmit={handleAddBudget} className="budget-form">
+            <h2>Add New Budget</h2>
+            <input
+              type="text"
+              placeholder="Title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              required
+            />
+            <input
+              type="number"
+              placeholder="Amount"
+              value={amount}
+              onChange={(e) => setAmount(e.target.value)}
+              required
+              min={1}
+            />
+            <button id="Modal_button" type="submit">
+              Add Budget
+            </button>
+          </form>
+        </Modal>
         <div className="user__name">
           <svg
             width="38"
@@ -58,14 +106,14 @@ function Header() {
           </svg>
           {user ? (
             <>
-              <p className="name">Welcome {user.name}</p>
+              <p className="name">Welcome {user.displayName}</p>
               <button className="SignOutButton" onClick={handleSignOut}>
                 Sign Out
               </button>
             </>
           ) : (
-            <Link className="SignUpButton " to="/welcome/signup">
-              SignUp
+            <Link className="SignUpButton" to="/welcome/signup">
+              Sign Up
             </Link>
           )}
         </div>

@@ -1,7 +1,5 @@
-interface titleProps {
-  title1: string;
-  title2: string;
-}
+import { titleProps } from "../interface";
+
 function Logo({ title1, title2 }: titleProps) {
   return (
     <h1 className="Logo">
