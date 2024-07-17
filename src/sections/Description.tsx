@@ -1,4 +1,4 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import useAuth from "./../hooks/useAuth";
 import { Budget } from "../interface";
 import useBudget from "../hooks/useBudget";
@@ -13,15 +13,15 @@ function Description() {
   };
   useEffect(() => {
     if (
-      user.budgets.length == 0 ||
-      user.budgets == undefined ||
-      !user.budgets
+      user?.budgets?.length == 0 ||
+      user?.budgets == undefined ||
+      !user?.budgets
     ) {
       setIsEmpty(true);
     } else {
       setIsEmpty(false);
     }
-  }, [user.budgets]);
+  }, [user?.budgets]);
   return (
     <section className="description">
       <div className="description__header">
@@ -65,21 +65,21 @@ function Description() {
           <path
             d="M31.5 77a3.5 3.5 0 100-7 3.5 3.5 0 000 7zM70 77a3.5 3.5 0 100-7 3.5 3.5 0 000 7z"
             stroke="#FFFDE7"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
           <path
             d="M3.5 3.5h14l9.38 46.865a7 7 0 007 5.635H67.9a7 7 0 007-5.635L80.5 21H21"
             stroke="#FFFDE7"
-            stroke-width="4"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </svg>
       </div>
       <div className={`expenses ${isEmpty ? "close" : ""}`}>
-        {user.budgets.map((budget: Budget) => (
+        {user?.budgets?.map((budget: Budget) => (
           <div className="expense" key={budget.id}>
             <div className="expense__details">
               <svg
