@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import welcomeImage from "../assets/welcome_image.png";
+import welcomeImage from "../../public/welcome_image.png";
 
 function Welcome() {
   return (

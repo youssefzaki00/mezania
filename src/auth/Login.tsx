@@ -4,8 +4,6 @@ import Logo from "../components/Logo";
 import { toast } from "react-toastify";
 import useAuth from "../hooks/useAuth";
 import { ErrorMessage } from "../interface";
-import { signOut } from "firebase/auth";
-import { auth } from "../firebase/Firebase";
 
 function Login() {
   const { login } = useAuth();

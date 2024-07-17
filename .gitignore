@@ -6,6 +6,11 @@
 .pnp.js
 # assets 
 /assets
+/assets/home
+/assets/icons
+/assets/icons
+/assets/logo
+
 # testing
 /coverage
 
