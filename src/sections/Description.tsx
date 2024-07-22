@@ -8,12 +8,12 @@ function Description() {
   const { user } = useAuth();
   const { removeBudget } = useBudget();
   const { changeActiveBudget } = useActiveBudget();
-  const [isClose, setIsClose] = useState<boolean>(false);
+  // const [isClose, setIsClose] = useState<boolean>(false);
   const [isEmpty, setIsEmpty] = useState<boolean>(true);
 
-  const toggleClass = (): void => {
-    setIsClose(!isClose);
-  };
+  // const toggleClass = (): void => {
+  //   setIsClose(!isClose);
+  // };
   useEffect(() => {
     if (
       user?.budgets?.length == 0 ||
@@ -25,33 +25,13 @@ function Description() {
       setIsEmpty(false);
     }
   }, [user?.budgets]);
-  const handleActiveBudget = (budget) => {
+  const handleActiveBudget = (budget: Budget) => {
     changeActiveBudget(budget);
   };
   return (
     <section className="description">
       <div className="description__header">
         <h3>Budgets</h3>
-        {/* <div className="filter">
-          <p className="filter__text">filter budgets</p>
-          <button
-            className="filter__button"
-            type="button"
-            onClick={toggleClass}
-          >
-            <p className="filter__type">All</p>
-            <img
-              className={`${isClose ? "closeIcon" : ""}`}
-              src={chevronDown}
-              alt={`${isClose ? "chevron Down" : "chevron Down"}`}
-            />
-          </button>
-          <ul className={`filter__list ${isClose ? "" : "close"}`}>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-          </ul>
-        </div> */}
       </div>
       <div className={`empty ${isEmpty ? "" : "close"}`}>
         <p className="empty__text">
