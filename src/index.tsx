@@ -6,6 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { UserProvider } from "./context/UserContext";
+import { ActiveBudgetProvider } from "./context/ActiveBudgetContext";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
@@ -13,7 +14,9 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <UserProvider>
-        <App />
+        <ActiveBudgetProvider>
+          <App />
+        </ActiveBudgetProvider>
       </UserProvider>
       <ToastContainer />
     </BrowserRouter>

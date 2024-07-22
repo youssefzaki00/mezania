@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import logoMain from "../../public/logo.svg";
+import logoMain from "/logo.svg";
 import Button from "./Button";
 import useAuth from "../hooks/useAuth";
 import { toast } from "react-toastify";

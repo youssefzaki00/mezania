@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
 import useAuth from "./../hooks/useAuth";
 import { Budget } from "../interface";
-import useBudget from "../hooks/useBudget";
+import useActiveBudget from "../hooks/useActiveBudget";
+import useBudget from "./../hooks/useBudget";
 
 function Description() {
   const { user } = useAuth();
   const { removeBudget } = useBudget();
+  const { changeActiveBudget } = useActiveBudget();
   const [isClose, setIsClose] = useState<boolean>(false);
   const [isEmpty, setIsEmpty] = useState<boolean>(true);
+
   const toggleClass = (): void => {
     setIsClose(!isClose);
   };
@@ -22,12 +25,15 @@ function Description() {
       setIsEmpty(false);
     }
   }, [user?.budgets]);
+  const handleActiveBudget = (budget) => {
+    changeActiveBudget(budget);
+  };
   return (
     <section className="description">
       <div className="description__header">
         <h3>Budgets</h3>
         {/* <div className="filter">
-          <p className="filter__text">filter expenses</p>
+          <p className="filter__text">filter budgets</p>
           <button
             className="filter__button"
             type="button"
@@ -50,7 +56,7 @@ function Description() {
       <div className={`empty ${isEmpty ? "" : "close"}`}>
         <p className="empty__text">
           Looks like you haven&apos;t added any
-          <span> expenses yet.</span>
+          <span> budgets yet.</span>
         </p>
         <p className="empty__sub">
           No worries, just hit the <span> &apos;Add New budget&apos; </span>
@@ -78,10 +84,14 @@ function Description() {
           />
         </svg>
       </div>
-      <div className={`expenses ${isEmpty ? "close" : ""}`}>
+      <div className={`budgets ${isEmpty ? "close" : ""}`}>
         {user?.budgets?.map((budget: Budget) => (
-          <div className="expense" key={budget.id}>
-            <div className="expense__details">
+          <div
+            className="budget"
+            key={budget?.id}
+            onClick={() => handleActiveBudget(budget)}
+          >
+            <div className="budget__details">
               <svg
                 width="54"
                 height="54"
@@ -89,7 +99,7 @@ function Description() {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <circle cx="27" cy="27" r="27" fill="#51D289" />
-                <g clip-path="url(#prefix__clip0_6_222)" fill="#1E1E1E">
+                <g clipPath="url(#prefix__clip0_6_222)" fill="#1E1E1E">
                   <path d="M39.75 20.313v-3.23a2.842 2.842 0 00-2.833-2.833H17.083a2.833 2.833 0 00-2.833 2.833v19.834a2.833 2.833 0 002.833 2.833h19.834a2.842 2.842 0 002.833-2.833v-3.23c.836-.496 1.417-1.389 1.417-2.437v-8.5c0-1.048-.581-1.94-1.417-2.437zm-1.417 2.437v8.5h-9.916v-8.5h9.916zm-21.25 14.167V17.083h19.834v2.834h-8.5a2.842 2.842 0 00-2.834 2.833v8.5a2.842 2.842 0 002.834 2.833h8.5v2.834H17.083z" />
                   <path d="M32.667 29.125a2.125 2.125 0 100-4.25 2.125 2.125 0 000 4.25z" />
                 </g>
@@ -103,24 +113,31 @@ function Description() {
                   </clipPath>
                 </defs>
               </svg>
-              <div className="expense__content">
-                <h4 className="expense__title">{budget.title}</h4>
-                <p className="expense__date">
+              <div className="budget__content">
+                <h4 className="budget__title">{budget?.title}</h4>
+                <p className="budget__date">
                   date:
-                  <span> {budget.date}</span>
+                  <span> {budget?.date}</span>
                 </p>
               </div>
             </div>
-            <div className="expense__budget">
-              <p className="expense__amount">budget: £{budget.amount}</p>
-              <div className="expense__amount_calc">
-                <p className="expense__amount_spent">spent: £{budget.spent}</p>
-                <p className="expense__amount_remaining">
-                  remaining: £{budget.remaining}
+            <div className="budget__budget">
+              <p className="budget__amount">
+                budget: <span>£{budget?.amount?.toLocaleString()}</span>
+              </p>
+              <div className="budget__amount_calc">
+                <p className="budget__amount_spent">
+                  spent: <span>£{budget?.spent?.toLocaleString()}</span>
+                </p>
+                <p className="budget__amount_remaining">
+                  remaining: <span>£{budget?.remaining?.toLocaleString()}</span>
                 </p>
               </div>
             </div>
-            <button onClick={() => removeBudget(budget.id)}>
+            <button
+              className="remove__button"
+              onClick={() => removeBudget(budget?.id)}
+            >
               <svg
                 width="29"
                 height="28"

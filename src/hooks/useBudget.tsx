@@ -1,6 +1,6 @@
-import { useCallback, useContext } from "react";
+import { useCallback, useContext, useState } from "react";
 import { UserContext } from "../context/UserContext";
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 import { db } from "../firebase/Firebase";
 import { Budget } from "../interface";
@@ -13,6 +13,7 @@ function useBudget() {
   }
 
   const { user, setUser, loading } = context;
+
   const addBudget = useCallback(
     async (title: string, amount: number) => {
       if (!user) {
@@ -71,7 +72,12 @@ function useBudget() {
     [user, setUser]
   );
 
-  return { addBudget, removeBudget, user, loading };
+  return {
+    addBudget,
+    removeBudget,
+    user,
+    loading,
+  };
 }
 
 export default useBudget;

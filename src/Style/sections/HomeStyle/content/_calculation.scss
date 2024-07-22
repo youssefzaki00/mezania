@@ -79,7 +79,7 @@
       }
     }
   }
-  button {
+  .add__expense {
     width: 100%;
   }
 }
@@ -97,19 +97,21 @@
   .expense {
     border-bottom: 0.15rem dotted #a5a5a5;
     padding: 0rem 0 1rem;
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
     align-items: center;
     font-weight: 500;
     font-size: var(--paragraph);
     &__name,
     &__value {
-      width: 5rem;
-      max-width: 5rem;
-      text-align: left;
+      // width: 5rem;
+      // max-width: 5rem;
+      // text-align: left;
     }
     &__name {
       color: var(--color-green);
+      padding-left: 0.5rem;
     }
     &__value {
       color: var(--color-yellow);
@@ -117,6 +119,9 @@
     &:last-child {
       border: none;
       padding: 0rem;
+    }
+    .remove__button {
+      width: fit-content;
     }
   }
 }

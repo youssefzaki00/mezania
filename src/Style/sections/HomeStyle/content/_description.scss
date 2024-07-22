@@ -7,6 +7,7 @@
     h3 {
       color: var(--color-yellow);
       font-size: var(--heading-h3);
+      font-weight: var(--font-weight-bold);
       text-transform: capitalize;
     }
     .filter {
@@ -111,65 +112,84 @@
       }
     }
   }
-  .expenses {
+  .budgets {
     display: flex;
     flex-direction: column;
     height: 100%;
 
-    .expense {
+    .budget {
+      user-select: none;
       text-transform: capitalize;
       color: var(--color-white);
       display: flex;
+      cursor: pointer;
       justify-content: space-between;
       align-items: center;
-      padding: 2.6rem 0.2rem;
+      padding: 2.6rem 1.3rem;
       border-top: 0.1rem dashed var(--color-base-graph);
       // margin-top: 2.6rem;
-      .expense__details {
+      position: relative;
+      transition: all 2s;
+      .budget__details {
         display: flex;
         align-items: center;
         gap: 1.2rem;
         img {
           object-fit: contain;
         }
-        .expense__content {
+        .budget__content {
           display: flex;
           flex-direction: column;
           gap: 1rem;
           align-items: start;
           justify-content: space-between;
           font-size: var(--paragraph);
-          .expense__title {
+          .budget__title {
             font-size: var(--heading-h4);
           }
-          .expense__date {
+          .budget__date {
             span {
               font-weight: var(--font-weight-bold);
             }
           }
         }
       }
-      .expense__budget {
+      .budget__budget {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        gap: 1rem;
+        gap: 1.2rem;
         font-size: var(--paragraph);
-        font-weight: 500;
-        .expense__amount {
+        font-weight: 600;
+
+        .budget__amount {
           color: var(--color-yellow);
           &_calc {
             display: flex;
             align-items: center;
             gap: 1.2rem;
-            .expense__amount_remaining {
+            .budget__amount_remaining {
               color: var(--color-green);
             }
-            .expense__amount_spent {
+            .budget__amount_spent {
               color: var(--color-error);
             }
           }
         }
+      }
+
+      &:hover::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--color-white);
+        opacity: 10%;
+      }
+      &:active::before {
+        opacity: 30%;
       }
     }
   }
@@ -200,28 +220,28 @@
         }
       }
     }
-    .expenses {
-      .expense {
+    .budgets {
+      .budget {
         padding: 1.6rem 0.2rem;
-        .expense__details {
+        .budget__details {
           img {
             width: 4rem;
             height: 4rem;
           }
-          .expense__content {
+          .budget__content {
             gap: 0.4rem;
             font-size: var(--small-text);
-            .expense__title {
+            .budget__title {
               font-size: var(--heading-h4);
             }
-            .expense__date {
+            .budget__date {
               span {
                 font-weight: var(--font-weight-bold);
               }
             }
           }
         }
-        .expense__amount {
+        .budget__amount {
           font-size: var(--heading-h4);
         }
       }
