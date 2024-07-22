@@ -39,10 +39,10 @@ function Calculation() {
   }, [percent]);
   return (
     <section className="calculation">
-      <h3>{activeBudget?.title}</h3>
+      <h3>{activeBudget?.title || "No Budget"}</h3>
       <div className="box__value">
         <p>Income</p>
-        <p>£{Number(activeBudget?.amount).toLocaleString()}</p>
+        <p>£{Number(activeBudget?.amount).toLocaleString() || 0}</p>
       </div>
       <div className="center">
         <div className="progress">
@@ -62,54 +62,56 @@ function Calculation() {
       <div className="boxes__values">
         <div className="box__value">
           <p>Available</p>
-          <p>£{Number(activeBudget?.remaining).toLocaleString()}</p>
+          <p>£{Number(activeBudget?.remaining).toLocaleString() || 0}</p>
         </div>
         <div className="box__value">
           <p>Spent</p>
-          <p>£{Number(activeBudget?.spent).toLocaleString()}</p>
+          <p>£{Number(activeBudget?.spent).toLocaleString() || 0}</p>
         </div>
       </div>
       <div className="box__value">
         <h4 className="Expenses__header h4-heading">Expenses</h4>
-        <p>£{Number(activeBudget?.spent).toLocaleString()}</p>
+        <p>£{Number(activeBudget?.spent).toLocaleString() || 0}</p>
       </div>
-      <div className="box__expenses">
-        {activeBudget?.expenses.map((expense) => (
-          <div className="expense" key={expense?.id}>
-            <p className="expense__name">{expense?.title}</p>
-            <p className="expense__value">
-              £{Number(expense?.amount).toLocaleString()}
-            </p>
-            <button
-              className="remove__button"
-              onClick={() => removeExpense(expense.id)}
-            >
-              <svg
-                width="29"
-                height="28"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+      {activeBudget && (
+        <div className="box__expenses">
+          {activeBudget?.expenses.map((expense) => (
+            <div className="expense" key={expense?.id}>
+              <p className="expense__name">{expense?.title}</p>
+              <p className="expense__value">
+                £{Number(expense?.amount).toLocaleString()}
+              </p>
+              <button
+                className="remove__button"
+                onClick={() => removeExpense(expense.id)}
               >
-                <g clipPath="url(#prefix__clip0_18_3821)">
-                  <path
-                    d="M16.973 12.215L14.5 14.688l-2.485-2.473-1.645 1.645 2.485 2.473-2.473 2.474 1.645 1.645 2.473-2.474 2.473 2.474 1.645-1.645-2.473-2.474 2.473-2.473-1.645-1.645zm1.61-7.548L17.417 3.5h-5.834l-1.166 1.167H6.333V7h16.334V4.667h-4.084zM7.5 22.167A2.34 2.34 0 009.833 24.5h9.334a2.34 2.34 0 002.333-2.333v-14h-14v14zM9.833 10.5h9.334v11.667H9.833V10.5z"
-                    fill="#F44336"
-                  />
-                </g>
-                <defs>
-                  <clipPath id="prefix__clip0_18_3821">
+                <svg
+                  width="29"
+                  height="28"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g clipPath="url(#prefix__clip0_18_3821)">
                     <path
-                      fill="#fff"
-                      transform="translate(.5)"
-                      d="M0 0h28v28H0z"
+                      d="M16.973 12.215L14.5 14.688l-2.485-2.473-1.645 1.645 2.485 2.473-2.473 2.474 1.645 1.645 2.473-2.474 2.473 2.474 1.645-1.645-2.473-2.474 2.473-2.473-1.645-1.645zm1.61-7.548L17.417 3.5h-5.834l-1.166 1.167H6.333V7h16.334V4.667h-4.084zM7.5 22.167A2.34 2.34 0 009.833 24.5h9.334a2.34 2.34 0 002.333-2.333v-14h-14v14zM9.833 10.5h9.334v11.667H9.833V10.5z"
+                      fill="#F44336"
                     />
-                  </clipPath>
-                </defs>
-              </svg>
-            </button>
-          </div>
-        ))}
-      </div>
+                  </g>
+                  <defs>
+                    <clipPath id="prefix__clip0_18_3821">
+                      <path
+                        fill="#fff"
+                        transform="translate(.5)"
+                        d="M0 0h28v28H0z"
+                      />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
       <button
         className="button h4-heading add__expense"
         type="button"
