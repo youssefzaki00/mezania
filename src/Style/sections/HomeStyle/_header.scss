@@ -113,6 +113,11 @@ header {
         bottom: 1rem;
         font-weight: var(--font-weight-regular);
         font-size: var(--heading-h5);
+        width: 100%;
+        svg {
+          object-fit: contain;
+          width: 65px;
+        }
       }
       // img {
       //   display: none;

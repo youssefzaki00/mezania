@@ -24,7 +24,7 @@ const useActiveBudget = () => {
   const addExpense = useCallback(
     async (title: string, amount: number) => {
       if (!user || !activeBudget) {
-        toast.error("User or budget is not authenticated");
+        toast.error("User is not authenticated");
         return;
       }
 
