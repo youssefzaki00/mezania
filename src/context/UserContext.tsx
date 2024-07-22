@@ -113,7 +113,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
       signup,
       signout,
     }),
-    [user, setUser, setLoading, loading, login, signup, signout, getUser]
+    [user, setUser,loading, setLoading, login, signup, signout, getUser]
   );
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;

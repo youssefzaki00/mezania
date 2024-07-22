@@ -37,7 +37,12 @@ const useActiveBudget = () => {
         };
 
         const updatedExpenses = [...(activeBudget.expenses || []), newExpense];
-        const updatedBudget = { ...activeBudget, expenses: updatedExpenses };
+        const updatedBudget = {
+          ...activeBudget,
+          spent: activeBudget.spent + amount,
+          remaining: activeBudget.remaining - amount,
+          expenses: updatedExpenses,
+        };
 
         const budgetIndex = user.budgets.findIndex(
           (budget) => budget.id === activeBudget.id
