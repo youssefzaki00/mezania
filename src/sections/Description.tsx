@@ -7,9 +7,11 @@ import useBudget from "./../hooks/useBudget";
 function Description() {
   const { user } = useAuth();
   const { removeBudget } = useBudget();
-  const { changeActiveBudget } = useActiveBudget();
+  const { activeBudget, changeActiveBudget } = useActiveBudget();
   // const [isClose, setIsClose] = useState<boolean>(false);
   const [isEmpty, setIsEmpty] = useState<boolean>(true);
+
+  console.log(activeBudget);
 
   // const toggleClass = (): void => {
   //   setIsClose(!isClose);
@@ -67,7 +69,9 @@ function Description() {
       <div className={`budgets ${isEmpty ? "close" : ""}`}>
         {user?.budgets?.map((budget: Budget) => (
           <div
-            className="budget"
+            className={`budget ${
+              activeBudget?.id == budget?.id ? "active" : ""
+            }`}
             key={budget?.id}
             onClick={() => handleActiveBudget(budget)}
           >
@@ -103,14 +107,15 @@ function Description() {
             </div>
             <div className="budget__budget">
               <p className="budget__amount">
-                budget: <span>£{budget?.amount?.toLocaleString()}</span>
+                budget: <span>£{budget?.amount?.toLocaleString() || 0}</span>
               </p>
               <div className="budget__amount_calc">
                 <p className="budget__amount_spent">
-                  spent: <span>£{budget?.spent?.toLocaleString()}</span>
+                  spent: <span>£{budget?.spent?.toLocaleString() || 0}</span>
                 </p>
                 <p className="budget__amount_remaining">
-                  remaining: <span>£{budget?.remaining?.toLocaleString()}</span>
+                  remaining:{" "}
+                  <span>£{budget?.remaining?.toLocaleString() || 0}</span>
                 </p>
               </div>
             </div>

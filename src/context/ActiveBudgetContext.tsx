@@ -19,9 +19,16 @@ export const ActiveBudgetProvider: React.FC<{ children: React.ReactNode }> = ({
   const [activeBudget, setActiveBudget] = useState<Budget | undefined>(
     user?.budgets[0]
   );
+
   useEffect(() => {
     setActiveBudget(user?.budgets[0]);
+  }, []);
+  useEffect(() => {
+    if (!activeBudget && user?.budgets?.length > 0) {
+      setActiveBudget(user.budgets[0]);
+    }
   }, [user]);
+
   const changeActiveBudget = (budget: Budget) => {
     setActiveBudget(budget);
   };

@@ -62,7 +62,7 @@ const useActiveBudget = () => {
         const updatedUser = { ...user, budgets: updatedUserBudgets };
 
         setUser(updatedUser);
-        setActiveBudget(updatedBudget);
+        changeActiveBudget(updatedBudget);
 
         toast.success("Expense added successfully");
       } catch (error) {

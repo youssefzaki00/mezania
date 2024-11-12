@@ -1,4 +1,6 @@
 .description {
+
+
   .description__header {
     display: flex;
     justify-content: space-between;
@@ -178,7 +180,8 @@
         }
       }
 
-      &:hover::before {
+      &:hover::before,
+      &.active::before {
         content: "";
         position: absolute;
         left: 0;
